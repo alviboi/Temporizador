@@ -1,0 +1,98 @@
+﻿<Window xmlns:Temporizador="clr-namespace:Temporizador"  x:Class="Temporizador.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Reloj" Height="340" Width="400" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <Menu x:Name="menu_principal" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3">
+            <MenuItem Name="Archivo" Height="auto" Header="Menu">
+                <MenuItem Header="Salir" />
+            </MenuItem>
+            <MenuItem Header="Despertador">
+                <MenuItem Header="Activar">
+                    <MenuItem.Icon>
+                        <Image x:Name="icona_activar" Visibility="Hidden" Source="/img/check.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            <MenuItem Header="Desactivar">
+                    <MenuItem.Icon>
+                        <Image x:Name="icona_desactivar" Visibility="Hidden" Source="/img/check.png" />
+                    </MenuItem.Icon>
+            </MenuItem>
+             </MenuItem>
+            <MenuItem Header="País">
+                <MenuItem Header="Añadir"/>
+                <Separator/>
+                <MenuItem Header="Eliminar"/>
+            </MenuItem>
+            <MenuItem Header="Ayuda">
+                <MenuItem Header="Acerca de..." Click="Acerca_de"/>
+            </MenuItem>
+
+        </Menu>
+        <ToolBar Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Band="1" BandIndex="1">
+            <ToggleButton Height="32" Width="32" Click="Activa_despertador">
+                <Image Source="/img/clock-icon.png" />
+            </ToggleButton>
+        </ToolBar>
+
+        <StatusBar Height="20" Grid.ColumnSpan="3" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" Name="statusBar1" VerticalAlignment="Bottom" Background="AntiqueWhite">
+            <TextBlock Text="Alarma sonant" Name="alarma_sonant" Visibility="Hidden"/>
+        </StatusBar>
+        <TextBlock Grid.Column="1" Grid.Row="2" Name="etHora_text" Text="HORA" FontSize="24"
+            />
+
+        <TextBox Grid.Column="1" Grid.Row="3" Name="etHora" Text="00:00:00" IsEnabled="False" FontSize="36"
+            HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <TextBlock Grid.Column="1" Grid.Row="4" Name="ctDespertador_text" Text="ALARMA" FontSize="24"
+            />
+
+        <TextBox Grid.Column="1" Grid.Row="5" Name="ctDespertador" Text="00:00:00" IsEnabled="True" FontSize="36"
+            HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+        <!-- ES UNA ALTERNATIVA A LA MANERA PROPOSADA D'AFEGIR EL DESPERTADOR
+        <Grid Grid.Column="1" Grid.Row="3" Margin="30">
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Temporizador:UserControl1 x:Name="UC1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+            <Temporizador:UserControl1 x:Name="UC2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"/>
+            <Temporizador:UserControl1 Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+            <Temporizador:UserControl1 Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"/>
+            <Temporizador:UserControl1 Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+            <Temporizador:UserControl1 Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"/>
+
+            <Button Grid.Column="0" Grid.Row="1" Click="Button_Click"></Button>
+            <Button Grid.Column="1" Grid.Row="1" Click="Button_Click_1"></Button>
+
+        </Grid>
+    -->
+        
+  </Grid>
+</Window>
