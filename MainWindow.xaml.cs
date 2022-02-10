@@ -126,6 +126,16 @@ namespace Temporizador
 
         }
 
+        private void Afegir_pais(object sender, RoutedEventArgs e)
+        {
+            AgregarPais agregarpais = new AgregarPais();
+            agregarpais.Show();
+        }
+
+        public static void Afegir_a_List(String a)
+        {
+            MessageBox.Show(a);
+        }
 
     }
 
