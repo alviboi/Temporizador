@@ -62,7 +62,7 @@
         <StatusBar Height="20" Grid.ColumnSpan="3" Grid.Row="8" Grid.Column="0" HorizontalAlignment="Left" Name="statusBar1" VerticalAlignment="Bottom" Background="AntiqueWhite">
             <TextBlock Text="Alarma sonant" Name="alarma_sonant" Visibility="Hidden"/>
             <Button Content="Afegir" Click="afegix_alMenu" Height="16"/>
-            <Button Content="Borrar" Click="eliminar_menus_paisos" Height="16"/>
+            <Button Content="Borrar" Click="ReproduceAlarma" Height="16"/>
         </StatusBar>
         <TextBlock Grid.Column="1" Grid.Row="2" Name="etHora_text" Text="HORA" FontSize="24"
             />

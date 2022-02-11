@@ -250,9 +250,9 @@ namespace Temporizador
             }
         }
 
-        private void ReproduceAlarma()
+        private void ReproduceAlarma(object sender, RoutedEventArgs e)
         {
-            SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\chimes.wav");
+            SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\Alfredo\source\repos\Temporizador\img\mixkit-sound-alert-in-hall-1006.wav");
 
             simpleSound.Play();
         }
