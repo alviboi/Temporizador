@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Media;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -209,10 +210,13 @@ namespace Temporizador
             newMenuItemp.Header = "Països";
             newExistMenuItem.Items.Add(newMenuItemp);
 
-           /* MenuItem newMenuItem2 = new MenuItem();
+            /*
+            MenuItem newMenuItem2 = new MenuItem();
             MenuItem newExistMenuItem2 = (MenuItem)this.MenuPaisos.Items[3];
             newMenuItem2.Header = "Test prova";
-            newExistMenuItem2.Items.Add(newMenuItem2);*/
+            newExistMenuItem2.Items.Add(newMenuItem2);
+            newMenuItem2.Click += selecciona_pais;
+            */
             
             foreach (var item in paises)
             {
@@ -220,12 +224,37 @@ namespace Temporizador
                 MenuItem newExistMenuItem2 = (MenuItem)this.MenuPaisos.Items[3];
                 newMenuItemp.Header = item.nom;
                 newExistMenuItem2.Items.Add(newMenuItem2);
+                newMenuItem2.Click += selecciona_pais;
             }
         }
 
         private void eliminar_menus_paisos(object sender, RoutedEventArgs e)
         {
             this.MenuPaisos.Items.Remove((MenuItem)this.MenuPaisos.Items[3]);
+        }
+
+        private void selecciona_pais(object sender, RoutedEventArgs e)
+        {
+            MenuItem aux = (MenuItem)sender;
+            MessageBox.Show((string)aux.Header);
+
+            //ctHoraPais_txt.Text = "ALARMA PAÍS: " + (string)aux.Header;
+
+            foreach (var item in paises)
+            {
+                if (item.nom == (string)aux.Header)
+                {
+                    pais_seleccionat = item;
+                    ctHoraPais_txt.Text = "ALARMA PAÍS: " + item.nom;
+                }
+            }
+        }
+
+        private void ReproduceAlarma()
+        {
+            SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\chimes.wav");
+
+            simpleSound.Play();
         }
     }
 
