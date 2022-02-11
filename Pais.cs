@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Temporizador
 {
+    /// <summary>
+    /// Aquesta classe té els elements necessaris per a gestionar els Països
+    /// </summary>
     public class Pais
     {
         public Pais()
@@ -18,7 +21,9 @@ namespace Temporizador
             this.diferencia_horaria = diferencia_horaria;
             this.signo = signo;
         }
-
+        /// <summary>
+        /// Té les variables necessàries definides per a cada País.
+        /// </summary>
         public String nom { get; set; }
 
         public int diferencia_horaria { get; set; }

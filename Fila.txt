@@ -1,0 +1,162 @@
+Niue;11;True
+Samoa Americana;11;True
+Islas Cook;10;True
+Estados Unidos;10;True
+Polinesia Francesa;10;True
+Canadá;9;True
+Polinesia Francesa;9;True
+Estados Unidos;9;True
+Canadá;8;True
+Canadá;8;True
+Islas Pitcairn;8;True
+Canadá;7;True
+Canadá;7;True
+Belice;6;True
+Canadá;6;True
+Chile;6;True
+Ecuador;6;True
+Bahamas;5;True
+Canadá;5;True
+Brasil;5;True
+Colombia;5;True
+Cuba;5;True
+Chile;5;True
+Ecuador;5;True
+Perú;5;True
+Anguila;4;True
+Bahamas;4;True
+Brasil;4;True
+Bolivia;4;True
+Chile;4;True
+Cuba;4;True
+Guayana;4;True
+Paraguay;4;True
+Venezuela;4;True
+Antártida;3;True
+Antigua y Barbuda;3;True
+Brasil;3;True
+Brasil;3;True
+Chile;3;True
+Islas Malvinas;3;True
+Guayana Francesa;3;True
+Paraguay;3;True
+San Pedro y Miquelón;3;True
+Surinam;3;True
+Uruguay;3;True
+Groenlandia;3;True
+Brasil;2;True
+San Pedro y Miquelón;2;True
+Georgia del Sur y las Islas Sandwich del Sur;2;True
+Groenlandia;2;True
+Portugal;1;True
+Cabo Verde;1;True
+Groenlandia;1;True
+Antártida;0;True
+Angola;0;True
+España;0;True
+Portugal;0;True
+Groenlandia;0;True
+Albania;1;False
+Bailía de Guernsey;1;False
+España;1;False
+Irlanda;1;False
+Albania;2;False
+Botsuana;2;False
+Bulgaria;2;False
+Esuatini;2;False
+Irlanda;2;False
+Israel;2;False
+Arabia Saudita;3;False
+Bulgaria;3;False
+Eritrea;3;False
+Comores;3;False
+Belarús;3;False
+Israel;3;False
+Turquía;3;False
+Emiratos Árabes Unidos;4;False
+Armenia;4;False
+Azerbaiyán;4;False
+Georgia;4;False
+Isla Mauricio;4;False
+Reunión;4;False
+Rusia;4;False
+Seychelles;4;False
+Islas Heard y McDonald;5;False
+Kazajstán;5;False
+Maldivas;5;False
+Antártida;5;False
+Kazajstán;5;False
+Pakistán;5;False
+Kazajstán;5;False
+Tayikistán;5;False
+Turkmenistán;5;False
+Uzbekistán;5;False
+Rusia;5;False
+Kazajstán;6;False
+Bangladesh;6;False
+Bután;6;False
+Territorio Británico del Océano Índico;6;False
+Kirguistán;6;False
+Rusia;6;False
+Antártida;6;False
+China;6;False
+Cambodia;7;False
+Isla de Navidad;7;False
+Antártida;7;False
+Mongolia;7;False
+Rusia;7;False
+Rusia;7;False
+Indonesia;7;False
+China;8;False
+Australia;8;False
+Brunéi;8;False
+Indonesia;8;False
+Mongolia;8;False
+Hong Kong;8;False
+Rusia;8;False
+Malasia;8;False
+Filipinas;8;False
+Singapur;8;False
+Mongolia;8;False
+Corea del Norte;9;False
+Timor Oriental;9;False
+Indonesia;9;False
+Japón;9;False
+Palaos;9;False
+Rusia;9;False
+Guam;10;False
+Australia;10;False
+Australia;10;False
+Estados Federados de Micronesia;10;False
+Antártida;10;False
+Papúa Nueva Guinea;10;False
+Rusia;10;False
+Antártida;11;False
+Antártida;11;False
+Estados Federados de Micronesia;11;False
+Nueva Caledonia;11;False
+Isla Norfolk;11;False
+Estados Federados de Micronesia;11;False
+Rusia;11;False
+Islas Salomón;11;False
+Rusia;11;False
+Vanuatu;11;False
+Antártida;12;False
+Rusia;12;False
+Fiji;12;False
+Kiribati;12;False
+Rusia;12;False
+Islas Marshall;12;False
+Nauru;12;False
+Isla Norfolk;12;False
+Tuvalu;12;False
+Wallis y Futuna;12;False
+Antártida;13;False
+Fiji;13;False
+Kiribati;13;False
+Tokelau;13;False
+Tonga;13;False
+Samoa;13;False
+Kiribati;14;False
+Samoa;14;False
+

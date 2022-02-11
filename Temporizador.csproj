@@ -72,13 +72,11 @@
     <Compile Include="BorrarPais.xaml.cs">
       <DependentUpon>BorrarPais.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Fichero.cs" />
     <Compile Include="Info.xaml.cs">
       <DependentUpon>Info.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pais.cs" />
-    <Compile Include="SubmenuPaisos.xaml.cs">
-      <DependentUpon>SubmenuPaisos.xaml</DependentUpon>
-    </Compile>
     <Page Include="AgregarPais.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -103,10 +101,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SubmenuPaisos.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -153,6 +147,9 @@
     <EmbeddedResource Include="alarma.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Fila.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

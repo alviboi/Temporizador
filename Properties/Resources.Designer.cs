@@ -68,5 +68,43 @@ namespace Temporizador.Properties {
                 return ResourceManager.GetStream("alarma", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Niue;11;True
+        ///Samoa Americana;11;True
+        ///Islas Cook;10;True
+        ///Estados Unidos;10;True
+        ///Polinesia Francesa;10;True
+        ///Canadá;9;True
+        ///Polinesia Francesa;9;True
+        ///Estados Unidos;9;True
+        ///Canadá;8;True
+        ///Canadá;8;True
+        ///Islas Pitcairn;8;True
+        ///Canadá;7;True
+        ///Canadá;7;True
+        ///Belice;6;True
+        ///Canadá;6;True
+        ///Chile;6;True
+        ///Ecuador;6;True
+        ///Bahamas;5;True
+        ///Canadá;5;True
+        ///Brasil;5;True
+        ///Colombia;5;True
+        ///Cuba;5;True
+        ///Chile;5;True
+        ///Ecuador;5;True
+        ///Perú;5;True
+        ///Anguila;4;True
+        ///Bahamas;4;True
+        ///Brasil;4;True
+        ///Bolivia;4;True
+        ///Chile;4;Tru [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string Fila {
+            get {
+                return ResourceManager.GetString("Fila", resourceCulture);
+            }
+        }
     }
 }
