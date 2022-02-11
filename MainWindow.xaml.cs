@@ -19,6 +19,7 @@ namespace Temporizador
         private String hora_despertador_fin = "";
         private Boolean alarma_sonant_bool = false;
         public List <Pais> paises = new List <Pais> ();
+        public Pais pais_seleccionat = null;
         public MainWindow()
         {
             InitializeComponent();
@@ -53,6 +54,17 @@ namespace Temporizador
         private void ActualizarReloj()
         {
             etHora.Text = DateTime.Now.ToLongTimeString(); // hora actual
+
+            if (pais_seleccionat == null)
+            {
+                ctHoraPais.Text = DateTime.Now.ToLongTimeString(); // hora pais
+            } else
+            {
+                ctHoraPais.Text = DateTime.Now.AddHours(pais_seleccionat.diferencia_horaria).ToLongTimeString();
+            }
+
+            
+            
             if (etHora.Text == ctDespertador.Text)
             {
                 alarma_sonant.Visibility= Visibility.Visible;
@@ -185,6 +197,35 @@ namespace Temporizador
         {
             boto_despertador.IsChecked = false;
             Activa_Despertador(null, null);
+        }
+
+        private void afegix_alMenu(object sender, RoutedEventArgs e)
+        {
+            //MenuPaisos
+            
+            //MenuItem newExistMenuItem = (MenuItem)this.MenuPaisos.Items[0];
+            MenuItem newExistMenuItem = (MenuItem)this.MenuPaisos;
+            MenuItem newMenuItemp = new MenuItem();
+            newMenuItemp.Header = "Països";
+            newExistMenuItem.Items.Add(newMenuItemp);
+
+           /* MenuItem newMenuItem2 = new MenuItem();
+            MenuItem newExistMenuItem2 = (MenuItem)this.MenuPaisos.Items[3];
+            newMenuItem2.Header = "Test prova";
+            newExistMenuItem2.Items.Add(newMenuItem2);*/
+            
+            foreach (var item in paises)
+            {
+                MenuItem newMenuItem2 = new MenuItem();
+                MenuItem newExistMenuItem2 = (MenuItem)this.MenuPaisos.Items[3];
+                newMenuItemp.Header = item.nom;
+                newExistMenuItem2.Items.Add(newMenuItem2);
+            }
+        }
+
+        private void eliminar_menus_paisos(object sender, RoutedEventArgs e)
+        {
+            this.MenuPaisos.Items.Remove((MenuItem)this.MenuPaisos.Items[3]);
         }
     }
 

@@ -1,7 +1,7 @@
 ﻿<Window xmlns:Temporizador="clr-namespace:Temporizador"  x:Class="Temporizador.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Reloj" Height="340" Width="400" Loaded="Window_Loaded" ResizeMode="NoResize">
+        Title="Reloj" Height="510" Width="400" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
         <Grid.ContextMenu>
             <ContextMenu>
@@ -23,7 +23,9 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="3*"/>
-            <RowDefinition Height="20" />
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Menu x:Name="menu_principal" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3">
             <MenuItem Name="Archivo" Height="auto" Header="Menu">
@@ -41,7 +43,7 @@
                     </MenuItem.Icon>
             </MenuItem>
              </MenuItem>
-            <MenuItem Header="País">
+            <MenuItem x:Name="MenuPaisos" Header="País">
                 <MenuItem Header="Añadir" Click="Afegir_pais"/>
                 <Separator/>
                 <MenuItem Header="Eliminar"/>
@@ -57,8 +59,10 @@
             </ToggleButton>
         </ToolBar>
 
-        <StatusBar Height="20" Grid.ColumnSpan="3" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" Name="statusBar1" VerticalAlignment="Bottom" Background="AntiqueWhite">
+        <StatusBar Height="20" Grid.ColumnSpan="3" Grid.Row="8" Grid.Column="0" HorizontalAlignment="Left" Name="statusBar1" VerticalAlignment="Bottom" Background="AntiqueWhite">
             <TextBlock Text="Alarma sonant" Name="alarma_sonant" Visibility="Hidden"/>
+            <Button Content="Afegir" Click="afegix_alMenu" Height="16"/>
+            <Button Content="Borrar" Click="eliminar_menus_paisos" Height="16"/>
         </StatusBar>
         <TextBlock Grid.Column="1" Grid.Row="2" Name="etHora_text" Text="HORA" FontSize="24"
             />
@@ -72,6 +76,11 @@
         <TextBox Grid.Column="1" Grid.Row="5" Name="ctDespertador" Text="00:00:00" IsEnabled="True" FontSize="36" MaxLength="8"
             HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="138" MinWidth="138"/>
 
+        <TextBlock Grid.Column="1" Grid.Row="6" Name="ctHoraPais_txt" Text="ALARMA PAÍS" FontSize="24"
+            />
+
+        <TextBox Grid.Column="1" Grid.Row="7" Name="ctHoraPais" Text="00:00:00" IsEnabled="True" FontSize="36" MaxLength="8"
+            HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="138" MinWidth="138"/>
 
         <!-- ES UNA ALTERNATIVA A LA MANERA PROPOSADA D'AFEGIR EL DESPERTADOR
         <Grid Grid.Column="1" Grid.Row="3" Margin="30">
