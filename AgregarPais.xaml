@@ -36,7 +36,7 @@
         <TextBlock Grid.Column="4" Text="Negativo" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Height="16" Margin="27,0,0,0" Width="48"/>
         <CheckBox x:Name="signo_t" Grid.Column="4"  Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Height="16" Width="16"/>
         <Button Grid.Column="5" Grid.Row="1" Content="Aceptar" HorizontalAlignment="Center" VerticalAlignment="Center" Width="88" Click="Button_Click"/>
-        <Button Grid.Column="5" Grid.Row="2" Content="Cancelar" HorizontalAlignment="Center" VerticalAlignment="Center" Width="88"/>
+        <Button Grid.Column="5" Grid.Row="2" Content="Cancelar" HorizontalAlignment="Center" VerticalAlignment="Center" Width="88" Click="Salir"/>
 
     </Grid>
 </Window>

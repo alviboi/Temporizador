@@ -58,5 +58,10 @@ namespace Temporizador
             }
             
         }
+
+        private void Salir(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

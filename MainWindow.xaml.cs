@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Media;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 
 namespace Temporizador
 {
@@ -19,12 +22,18 @@ namespace Temporizador
         private int prova = 0;
         private String hora_despertador_fin = "";
         private Boolean alarma_sonant_bool = false;
-        public List <Pais> paises = new List <Pais> ();
+        private List<Pais> paises = new List<Pais>();
         public Pais pais_seleccionat = null;
+        SoundPlayer simpleSound;
+
+        public List<Pais> Paises { get => paises; set => paises = value; }
+
         public MainWindow()
         {
             InitializeComponent();
             CrearTemporizador();
+            simpleSound = new SoundPlayer(Properties.Resources.alarma);
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -61,7 +70,14 @@ namespace Temporizador
                 ctHoraPais.Text = DateTime.Now.ToLongTimeString(); // hora pais
             } else
             {
-                ctHoraPais.Text = DateTime.Now.AddHours(pais_seleccionat.diferencia_horaria).ToLongTimeString();
+                if (pais_seleccionat.signo)
+                {
+                    ctHoraPais.Text = DateTime.Now.AddHours(-pais_seleccionat.diferencia_horaria).ToLongTimeString();
+                }
+                else
+                {
+                    ctHoraPais.Text = DateTime.Now.AddHours(pais_seleccionat.diferencia_horaria).ToLongTimeString();
+                }
             }
 
             
@@ -88,14 +104,15 @@ namespace Temporizador
 
         }
 
-        private int ObtenerHoraDespertador()
+        private void ObtenerHoraDespertador(object sender, RoutedEventArgs e)
         {
             String[] arr_hor = ctDespertador.Text.Split(':');
             int hores = int.Parse(arr_hor[0]);
             int min = int.Parse(arr_hor[1]);
             int seg = int.Parse(arr_hor[2]);
-            int tornar = (seg + min * 60 + hores * 3600) * 10000000;
-            return tornar;
+            long tornar = (seg + min * 60 + hores * 3600);
+            MessageBox.Show("Número de pasos: "+tornar.ToString()+ "0000000");
+            //MessageBox.Show(ctDespertador.Text);
         }
 
         /*
@@ -111,9 +128,17 @@ namespace Temporizador
             MessageBoxResult messageBoxResult = MessageBox.Show(b.ToString());
         }
         */
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9|:]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
         private void Acerca_de(object sender, RoutedEventArgs e)
         {
-            Info info = new Info();
+            AboutBox1 info = new AboutBox1();
+
             info.Show();
         }
 
@@ -135,6 +160,7 @@ namespace Temporizador
                     ctDespertador.IsEnabled = true;
                     icona_activar.Visibility = Visibility.Hidden;
                     icona_desactivar.Visibility = Visibility.Visible;
+                    simpleSound.Stop();
                 }
 
                     /*button.Effect = new System.Windows.Media.Effects.DropShadowEffect()
@@ -185,7 +211,14 @@ namespace Temporizador
 
         public void Afegir_a_List(Pais a)
         {
-            paises.Add(a);
+            
+            if (paises.Count > 0)
+            {
+                eliminar_menus_paisos(null, null);
+            }
+            Paises.Add(a);
+            afegix_alMenu(null,null);
+
         }
 
         private void menu_activat_Click(object sender, RoutedEventArgs e)
@@ -202,30 +235,38 @@ namespace Temporizador
 
         private void afegix_alMenu(object sender, RoutedEventArgs e)
         {
-            //MenuPaisos
-            
-            //MenuItem newExistMenuItem = (MenuItem)this.MenuPaisos.Items[0];
+
+  
+
             MenuItem newExistMenuItem = (MenuItem)this.MenuPaisos;
             MenuItem newMenuItemp = new MenuItem();
             newMenuItemp.Header = "Països";
             newExistMenuItem.Items.Add(newMenuItemp);
 
-            /*
-            MenuItem newMenuItem2 = new MenuItem();
-            MenuItem newExistMenuItem2 = (MenuItem)this.MenuPaisos.Items[3];
-            newMenuItem2.Header = "Test prova";
-            newExistMenuItem2.Items.Add(newMenuItem2);
-            newMenuItem2.Click += selecciona_pais;
-            */
-            
-            foreach (var item in paises)
+            ContextMenu menu = this.contextpaisos;
+            MenuItem newMenuItempc = new MenuItem();
+            newMenuItempc.Header = "Països";
+            int a = menu.Items.Add(newMenuItempc);
+        
+
+            foreach (var item in Paises)
             {
                 MenuItem newMenuItem2 = new MenuItem();
-                MenuItem newExistMenuItem2 = (MenuItem)this.MenuPaisos.Items[3];
-                newMenuItemp.Header = item.nom;
-                newExistMenuItem2.Items.Add(newMenuItem2);
+
+                //MenuItem newExistMenuItem2 = (MenuItem)this.MenuPaisos.Items[3];
+
+                newMenuItem2.Header = item.nom;
+                newMenuItemp.Items.Add(newMenuItem2);
                 newMenuItem2.Click += selecciona_pais;
+
+                MenuItem newMenuItem2c = new MenuItem();
+
+                newMenuItem2c.Header = item.nom;
+                newMenuItempc.Items.Add(newMenuItem2c);
+                newMenuItem2c.Click += selecciona_pais;
             }
+            
+
         }
 
         private void eliminar_menus_paisos(object sender, RoutedEventArgs e)
@@ -236,26 +277,49 @@ namespace Temporizador
         private void selecciona_pais(object sender, RoutedEventArgs e)
         {
             MenuItem aux = (MenuItem)sender;
-            MessageBox.Show((string)aux.Header);
+            //MessageBox.Show((string)aux.Header);
 
             //ctHoraPais_txt.Text = "ALARMA PAÍS: " + (string)aux.Header;
 
-            foreach (var item in paises)
+            foreach (var item in Paises)
             {
                 if (item.nom == (string)aux.Header)
                 {
                     pais_seleccionat = item;
-                    ctHoraPais_txt.Text = "ALARMA PAÍS: " + item.nom;
+                    ctHoraPais_txt.Text = "HORA PAÍS: " + item.nom;
                 }
             }
         }
 
         private void ReproduceAlarma(object sender, RoutedEventArgs e)
         {
-            SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\Alfredo\source\repos\Temporizador\img\mixkit-sound-alert-in-hall-1006.wav");
-
-            simpleSound.Play();
+            simpleSound.PlayLooping();
         }
+
+        private void Surt(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void ObrirBorrarPais(object sender, RoutedEventArgs e)
+        { 
+            BorrarPais borrarpais = new BorrarPais();
+            borrarpais.Show();
+        }
+
+        public void BorrardePaisesList(String pais)
+        {
+            foreach (var item in paises)
+            {
+                if (item.nom == pais)
+                {
+                    paises.Remove(item);
+                    eliminar_menus_paisos(null, null);
+                    afegix_alMenu(null, null);
+                    break;
+                }
+            }
+        }   
     }
 
 }
