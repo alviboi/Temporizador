@@ -30,14 +30,14 @@
                 <MenuItem Header="Salir" />
             </MenuItem>
             <MenuItem Header="Despertador">
-                <MenuItem Header="Activar">
+                <MenuItem Name="menu_activat" Header="Activar" Click="menu_activat_Click">
                     <MenuItem.Icon>
                         <Image x:Name="icona_activar" Visibility="Hidden" Source="/img/check.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-            <MenuItem Header="Desactivar">
+                <MenuItem Name="menu_desactivat" Header="Desactivar" Click="menu_desactivat_Click">
                     <MenuItem.Icon>
-                        <Image x:Name="icona_desactivar" Visibility="Hidden" Source="/img/check.png" />
+                        <Image x:Name="icona_desactivar" Visibility="Visible" Source="/img/check.png" />
                     </MenuItem.Icon>
             </MenuItem>
              </MenuItem>
@@ -52,7 +52,7 @@
 
         </Menu>
         <ToolBar Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Band="1" BandIndex="1">
-            <ToggleButton Height="32" Width="32" Click="Activa_despertador">
+            <ToggleButton x:Name="boto_despertador" Height="32" Width="32" Click="Activa_Despertador">
                 <Image Source="/img/clock-icon.png" />
             </ToggleButton>
         </ToolBar>
@@ -69,8 +69,8 @@
         <TextBlock Grid.Column="1" Grid.Row="4" Name="ctDespertador_text" Text="ALARMA" FontSize="24"
             />
 
-        <TextBox Grid.Column="1" Grid.Row="5" Name="ctDespertador" Text="00:00:00" IsEnabled="True" FontSize="36"
-            HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="5" Name="ctDespertador" Text="00:00:00" IsEnabled="True" FontSize="36" MaxLength="8"
+            HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="138" MinWidth="138"/>
 
 
         <!-- ES UNA ALTERNATIVA A LA MANERA PROPOSADA D'AFEGIR EL DESPERTADOR

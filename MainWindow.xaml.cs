@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -17,6 +18,7 @@ namespace Temporizador
         private int prova = 0;
         private String hora_despertador_fin = "";
         private Boolean alarma_sonant_bool = false;
+        public List <Pais> paises = new List <Pais> ();
         public MainWindow()
         {
             InitializeComponent();
@@ -102,28 +104,64 @@ namespace Temporizador
             info.Show();
         }
 
-        private void Activa_despertador(object sender, RoutedEventArgs e)
+        private void Activa_Despertador(object sender, RoutedEventArgs e)
         {
-            ToggleButton button = sender as ToggleButton;
-            
-            if (button.IsEnabled)
+       
+            if (Comprova_hora())
             {
-                Despertador_Activat = true;
+
+                if ((bool)boto_despertador.IsChecked)
+                {
+                    Despertador_Activat = true;
+                    ctDespertador.IsEnabled = false;
+                    icona_activar.Visibility = Visibility.Visible;
+                    icona_desactivar.Visibility = Visibility.Hidden;
+                } else
+                {
+                    Despertador_Activat = false;
+                    ctDespertador.IsEnabled = true;
+                    icona_activar.Visibility = Visibility.Hidden;
+                    icona_desactivar.Visibility = Visibility.Visible;
+                }
+
+                    /*button.Effect = new System.Windows.Media.Effects.DropShadowEffect()
+                    {
+                        BlurRadius = 10,
+                        ShadowDepth = 5
+                    };*/
+
             } else
             {
-                Despertador_Activat = false;
+                MessageBox.Show("El format de l'hora no és correcte, ha de ser 00:00:00");
+                boto_despertador.IsChecked = false;
             }
-
-            /*button.Effect = new System.Windows.Media.Effects.DropShadowEffect()
-            {
-                BlurRadius = 10,
-                ShadowDepth = 5
-            };*/
         }
 
-        private void Activa_Alarma(object sender, RoutedEventArgs e)
+        private bool Comprova_hora()
         {
+            String[] hora = ctDespertador.Text.Split(':');
 
+
+            var isNumeric1 = int.TryParse(hora[0], out int hores);
+            var isNumeric2 = int.TryParse(hora[1], out int min);
+            var isNumeric3 = int.TryParse(hora[2], out int seg);
+
+            if (isNumeric1 && isNumeric2 && isNumeric3)
+            {
+                if (hores >= 0 && hores < 24 && min >= 0 && min < 60 && seg >= 0 && seg < 60)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            } else
+            {
+                return false;
+            }
+
+      
         }
 
         private void Afegir_pais(object sender, RoutedEventArgs e)
@@ -132,11 +170,22 @@ namespace Temporizador
             agregarpais.Show();
         }
 
-        public static void Afegir_a_List(String a)
+        public void Afegir_a_List(Pais a)
         {
-            MessageBox.Show(a);
+            paises.Add(a);
         }
 
+        private void menu_activat_Click(object sender, RoutedEventArgs e)
+        {
+            boto_despertador.IsChecked = true;
+            Activa_Despertador(null, null);
+        }
+
+        private void menu_desactivat_Click(object sender, RoutedEventArgs e)
+        {
+            boto_despertador.IsChecked = false;
+            Activa_Despertador(null, null);
+        }
     }
 
 }
